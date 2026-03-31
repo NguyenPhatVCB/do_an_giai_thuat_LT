@@ -1,0 +1,24 @@
+class Solution(object):
+    def mySqrt(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        if x < 2:
+            return x
+        
+        left, right = 2, x / 2
+        
+        while left <= right:
+            # Trong Python 2, x / y đã mặc định là chia lấy phần nguyên với số nguyên
+            mid = left + (right - left) / 2
+            num = mid * mid
+            
+            if num == x:
+                return mid
+            elif num < x:
+                left = mid + 1
+            else:
+                right = mid - 1
+                
+        return right
